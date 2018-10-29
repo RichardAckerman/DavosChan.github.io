@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Davos的博客</title>
+  <icon>https://www.gravatar.com/avatar/b86a0cc39d1443d3cd48b43ef2bb2770</icon>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://www.davoschan.com/"/>
+  <updated>2018-10-29T15:19:41.338Z</updated>
+  <id>https://www.davoschan.com/</id>
+  
+  <author>
+    <name>Davos</name>
+    <email>694150121@qq.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.davoschan.com/2018/10/29/hello-world/"/>
+    <id>https://www.davoschan.com/2018/10/29/hello-world/</id>
+    <published>2018-10-29T15:19:41.338Z</published>
+    <updated>2018-10-29T15:19:41.338Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">angular.js:<span class="number">14199</span> <span class="built_in">Error</span>: [$rootScope:inprog] http:<span class="comment">//errors.angularjs.org/1.5.11/$rootScope/inprog?p0=%24apply</span></span><br><span class="line">    at angular.js:<span class="number">38</span></span><br><span class="line">    at n (angular.js:<span class="number">18357</span>)</span><br><span class="line">    at m.$apply (angular.js:<span class="number">18092</span>)</span><br><span class="line">    at customer.js:<span class="number">43</span></span><br><span class="line">    at dispatch (jquery.min.js:<span class="number">3</span>)</span><br><span class="line">    at q.handle (jquery.min.js:<span class="number">3</span>)</span><br><span class="line">    at m.$scope.exportExcel (customer.js:<span class="number">345</span>)</span><br><span class="line">    at fn (<span class="built_in">eval</span> at compile (angular.js:<span class="number">15126</span>), &lt;anonymous&gt;:<span class="number">4</span>:<span class="number">224</span>)</span><br><span class="line">    at b (angular.js:<span class="number">16213</span>)</span><br><span class="line">    at e (angular.js:<span class="number">26592</span>)</span><br></pre></td></tr></table></figure><p>如上错误提示。当用js调用<em>click()</em>事件时，提示<em>Error: [$rootScope:inprog]</em> 错误。</p><p>###原因分析：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$scope.$apply();</span><br></pre></td></tr></table></figure></p><p>AngularJS报如上错误信息时，代表angular说它已经在处理脏数据了（调用了apply()方法），你别老催他。实际上是脏检查起冲突了。</p><p>###解决方法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>$scope.$applyAsync();</span><br><span class="line"><span class="number">2.</span>$scope.$evalAsync();</span><br><span class="line"><span class="number">3.</span>$timeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="comment">// 处理函数</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span 
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
